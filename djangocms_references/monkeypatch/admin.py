@@ -1,11 +1,12 @@
+from django.contrib import admin
 from django.contrib.contenttypes.models import ContentType
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 
-from djangocms_alias import admin
+from djangocms_alias.admin import AliasContentAdmin
 from djangocms_alias.models import AliasContent
 
-class AliasContentAdminExtended(admin.AliasContentAdmin):
+class AliasContentAdminExtended(AliasContentAdmin):
     def _get_references_link(self, obj, request):
         alias_content_type = ContentType.objects.get(
             app_label=obj.alias._meta.app_label,
